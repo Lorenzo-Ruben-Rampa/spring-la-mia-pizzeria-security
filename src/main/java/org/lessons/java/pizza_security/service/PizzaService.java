@@ -4,21 +4,21 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.lessons.java.pizza_security.repository.PizzasRepository;
+import org.lessons.java.pizza_security.repository.PizzaRepository;
 import org.lessons.java.pizza_security.model.Ingredient;
 import org.lessons.java.pizza_security.model.Pizza;
 import java.util.List;
 import java.util.Optional;
-import org.lessons.java.pizza_security.repository.IngredientsRepository;
+import org.lessons.java.pizza_security.repository.IngredientRepository;
 
 
 @Service
 public class PizzaService {
     @Autowired
-    private PizzasRepository pizzaRepository;
+    private PizzaRepository pizzaRepository;
 
     @Autowired
-    private IngredientsRepository ingredientsRepository;
+    private IngredientRepository ingredientsRepository;
 
     public List<Pizza> findAll() {
         return pizzaRepository.findAll();

@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.lessons.java.pizza_security.repository.PizzasRepository;
+import org.lessons.java.pizza_security.repository.PizzaRepository;
 import org.lessons.java.pizza_security.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.lessons.java.pizza_security.model.SpecialOffer;
-import org.lessons.java.pizza_security.repository.IngredientsRepository;
+import org.lessons.java.pizza_security.repository.IngredientRepository;
 
 @Controller
 @RequestMapping("/pizzas")
-public class PizzasController {
+public class PizzaController {
 
-    private final IngredientsRepository ingredientsRepository;
+    private final IngredientRepository ingredientsRepository;
 
     @Autowired
     private PizzaService pizzaService;
 
-    PizzasController(IngredientsRepository ingredientsRepository) {
+    PizzaController(IngredientRepository ingredientsRepository) {
         this.ingredientsRepository = ingredientsRepository;
     }
 

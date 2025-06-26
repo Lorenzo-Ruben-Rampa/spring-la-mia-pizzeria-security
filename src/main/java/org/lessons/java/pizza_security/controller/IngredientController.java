@@ -11,7 +11,7 @@ import org.springframework.validation.BindingResult;
 import java.util.List;
 import org.lessons.java.pizza_security.model.Pizza;
 import org.lessons.java.pizza_security.model.Ingredient;
-import org.lessons.java.pizza_security.repository.IngredientsRepository;
+import org.lessons.java.pizza_security.repository.IngredientRepository;
 import org.lessons.java.pizza_security.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequestMapping("/ingredients")
-public class IngredientsController {
+public class IngredientController {
 
     @Autowired
     private IngredientService ingredientService;

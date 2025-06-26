@@ -10,15 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.validation.Valid;         
 import org.springframework.validation.BindingResult; 
 import org.lessons.java.pizza_security.model.SpecialOffer; 
-import org.lessons.java.pizza_security.repository.SpecialOffersRepository; 
+import org.lessons.java.pizza_security.repository.SpecialOfferRepository; 
 import org.springframework.stereotype.Controller;
 
 @Controller
 @RequestMapping("/special-offers")
-public class SpecialOffersController {
+public class SpecialOfferController {
 
     @Autowired
-	private SpecialOffersRepository repository;       
+	private SpecialOfferRepository repository;       
      
 
 	@PostMapping("/create")
