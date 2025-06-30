@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.lessons.java.pizza_security.repository.PizzaRepository;
 import org.lessons.java.pizza_security.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import java.util.List;
@@ -32,7 +33,7 @@ public class PizzaController {
 
     //INDEX
     @GetMapping
-    public String index (Model model, @RequestParam(name="pizzaName", required=false) String searchPizzaName) {
+    public String index (Model model, Authentication authentication, @RequestParam(name="pizzaName", required=false) String searchPizzaName) {
         List<Pizza> pizzas;
         if (searchPizzaName != null && !searchPizzaName.isBlank()) {
             pizzas = pizzaService.findByName(searchPizzaName);
@@ -41,6 +42,7 @@ public class PizzaController {
             pizzas = pizzaService.findAll();
         }
         model.addAttribute("pizzas", pizzas);
+        model.addAttribute("username", authentication.getName());
         return "pizzas/index";
     }
     

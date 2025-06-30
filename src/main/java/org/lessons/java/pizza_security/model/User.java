@@ -13,6 +13,7 @@ import jakarta.persistence.JoinTable;
 @Table(name="users")
 public class User {
 
+    
     @Id
     private Integer id;
 

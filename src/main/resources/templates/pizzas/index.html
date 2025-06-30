@@ -19,7 +19,8 @@
                 th:value="${searchPizzaName}"> <button type="submit" class="btn btn-outline-warning">Cerca</button>
             </div>
         </form>
-            <div class="d-flex justify-content-center mb-3"><a th:href="@{/pizzas/create}" class="btn btn-success btn-sm">Aggiungi pizza</a></div>
+            <div class="d-flex justify-content-center mb-3"><a th:href="@{/pizzas/create}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-success btn-sm">Aggiungi pizza</a></div>
+            <h3 th:text="'Ciao ' + ${username}" />
             <div class="col-12">
                 <table class="table" th:if="${pizzas.size() > 0}">
                     <tbody>
@@ -29,8 +30,8 @@
                             <td class="align-middle text-warning">Prezzo: <br>[[*{price}]] euro</td>
                             <td> <img class= "list-images" th:src="*{urlImage}" alt="*{name}"</td>
                             <td class="align-middle" > <a th:href="@{/pizzas/{id}(id=*{id})}" class="btn btn-info btn-sm">Dettagli</a> </td>
-                            <td class="align-middle"> <a th:href="@{/pizzas/edit/{id}(id=${pizza.id})}" class="btn btn-info btn-sm">Modifica</a> </td>
-                            <td class="align-middle">
+                            <td class="align-middle"> <a th:href="@{/pizzas/edit/{id}(id=${pizza.id})}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-info btn-sm">Modifica</a> </td>
+                            <td class="align-middle" sec:authorize="hasAuthority('ADMIN')">
                                 <form action="@" th:action="@{'/pizzas/delete/{id}' (id=${pizza.id})}" method="post">
                                     <button class="btn btn-danger btn-sm" type="submit" id="submitButton">
                                         <i class="fas fa-trash-alt"></i>Cancella
@@ -39,7 +40,7 @@
                             </td>   
                             <td class="align-middle">
                                 <button class="btn btn-warning btn-sm">
-                                        <a th:href="@{/pizzas/{id}/special-offers(id=${pizza.id})}" class="btn btn-warning btn-sm">Aggiungi Sconto</a> 
+                                        <a th:href="@{/pizzas/{id}/special-offers(id=${pizza.id})}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-warning btn-sm">Aggiungi Sconto</a> 
                                 </button>
                             </td>
                         </tr>
